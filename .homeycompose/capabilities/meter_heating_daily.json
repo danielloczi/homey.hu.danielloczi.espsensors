@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "Heating Daily"
+    },
+    "type": "number",
+    "icon": "/assets/meter_heating.svg",
+    "units": {
+        "en": "kWh/day"
+    },
+    "getable": true,
+    "setable": false,
+    "insights": true,
+    "decimals": 0
+}

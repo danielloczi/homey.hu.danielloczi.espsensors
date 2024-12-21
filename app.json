@@ -1,0 +1,232 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "hu.danielloczi.espsensors",
+  "version": "1.0.3",
+  "compatibility": ">=12.2.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "ESP Sensors"
+  },
+  "description": {
+    "en": "Supports reading out sensor values of ESP-Home devices"
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Dániel Lőczi",
+    "email": "loczi.daniel@gmail.com"
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Hydrocal M3"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "meter_water_warm",
+        "meter_water_cold",
+        "meter_heating",
+        "meter_cooling",
+        "measure_temperature_supply",
+        "measure_temperature_return",
+        "measure_temperature_delta",
+        "measure_signal_strength",
+        "meter_water_warm_daily",
+        "meter_water_cold_daily",
+        "meter_heating_daily",
+        "meter_cooling_daily"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "images": {
+        "small": "/drivers/hydrocal-m3/assets/images/small.png",
+        "large": "/drivers/hydrocal-m3/assets/images/large.png",
+        "xlarge": "/drivers/hydrocal-m3/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "hydrocal-m3"
+    }
+  ],
+  "capabilities": {
+    "measure_temperature_delta": {
+      "title": {
+        "en": "Delta Temperature"
+      },
+      "type": "number",
+      "icon": "/assets/measure_temperature_delta.svg",
+      "units": {
+        "en": "°C"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "decimals": 1
+    },
+    "measure_temperature_return": {
+      "title": {
+        "en": "Return Temperature"
+      },
+      "type": "number",
+      "icon": "/assets/measure_temperature_return.svg",
+      "units": {
+        "en": "°C"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "decimals": 1
+    },
+    "measure_temperature_supply": {
+      "title": {
+        "en": "Supply Temperature"
+      },
+      "type": "number",
+      "icon": "/assets/measure_temperature_supply.svg",
+      "units": {
+        "en": "°C"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "decimals": 1
+    },
+    "meter_cooling": {
+      "title": {
+        "en": "Cooling"
+      },
+      "type": "number",
+      "icon": "/assets/meter_cooling.svg",
+      "units": {
+        "en": "kWh"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "decimals": 0
+    },
+    "meter_cooling_daily": {
+      "title": {
+        "en": "Cooling Daily"
+      },
+      "type": "number",
+      "icon": "/assets/meter_cooling.svg",
+      "units": {
+        "en": "kWh/day"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "decimals": 0
+    },
+    "meter_heating": {
+      "title": {
+        "en": "Heating"
+      },
+      "type": "number",
+      "icon": "/assets/meter_heating.svg",
+      "units": {
+        "en": "kWh"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "decimals": 0
+    },
+    "meter_heating_daily": {
+      "title": {
+        "en": "Heating Daily"
+      },
+      "type": "number",
+      "icon": "/assets/meter_heating.svg",
+      "units": {
+        "en": "kWh/day"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "decimals": 0
+    },
+    "meter_water_cold": {
+      "title": {
+        "en": "Cold Water"
+      },
+      "type": "number",
+      "icon": "/assets/meter_water_cold.svg",
+      "units": {
+        "en": "m³"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "decimals": 2
+    },
+    "meter_water_cold_daily": {
+      "title": {
+        "en": "Cold Water Daily"
+      },
+      "type": "number",
+      "icon": "/assets/meter_water_cold.svg",
+      "units": {
+        "en": "L/day"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "decimals": 0
+    },
+    "meter_water_warm": {
+      "title": {
+        "en": "Warm Water"
+      },
+      "type": "number",
+      "icon": "/assets/meter_water_warm.svg",
+      "units": {
+        "en": "m³"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "decimals": 2
+    },
+    "meter_water_warm_daily": {
+      "title": {
+        "en": "Warm Water Daily"
+      },
+      "type": "number",
+      "icon": "/assets/meter_water_warm.svg",
+      "units": {
+        "en": "L/day"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "decimals": 0
+    }
+  }
+}

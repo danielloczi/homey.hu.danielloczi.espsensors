@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "Warm Water Daily"
+    },
+    "type": "number",
+    "icon": "/assets/meter_water_warm.svg",
+    "units": {
+        "en": "L/day"
+    },
+    "getable": true,
+    "setable": false,
+    "insights": true,
+    "decimals": 0
+}

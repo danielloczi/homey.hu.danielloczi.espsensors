@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "Cooling Daily"
+    },
+    "type": "number",
+    "icon": "/assets/meter_cooling.svg",
+    "units": {
+        "en": "kWh/day"
+    },
+    "getable": true,
+    "setable": false,
+    "insights": true,
+    "decimals": 0
+}

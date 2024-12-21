@@ -1,0 +1,28 @@
+{
+  "id": "hu.danielloczi.espsensors",
+  "version": "1.0.3",
+  "compatibility": ">=12.2.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "ESP Sensors"
+  },
+  "description": {
+    "en": "Supports reading out sensor values of ESP-Home devices"
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Dániel Lőczi",
+    "email": "loczi.daniel@gmail.com"
+  }
+}

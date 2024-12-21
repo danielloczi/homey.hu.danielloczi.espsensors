@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "Cold Water Daily"
+    },
+    "type": "number",
+    "icon": "/assets/meter_water_cold.svg",
+    "units": {
+        "en": "L/day"
+    },
+    "getable": true,
+    "setable": false,
+    "insights": true,
+    "decimals": 0
+}

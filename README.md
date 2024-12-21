@@ -1,2 +1,3 @@
-# homey.hu.danielloczi.espsensors
-Device for Homey Pro to communicate with ESP Home based sensors
+# WMBus
+
+Supports reading out values from wireless M-Bus device using ESP-Home

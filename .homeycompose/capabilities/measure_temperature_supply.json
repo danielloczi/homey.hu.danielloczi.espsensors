@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "Supply Temperature"
+    },
+    "type": "number",
+    "icon": "/assets/measure_temperature_supply.svg",
+    "units": {
+        "en": "°C"
+    },
+    "getable": true,
+    "setable": false,
+    "insights": true,
+    "decimals": 1
+}

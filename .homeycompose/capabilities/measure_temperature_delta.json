@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "Delta Temperature"
+    },
+    "type": "number",
+    "icon": "/assets/measure_temperature_delta.svg",
+    "units": {
+        "en": "°C"
+    },
+    "getable": true,
+    "setable": false,
+    "insights": true,
+    "decimals": 1
+}

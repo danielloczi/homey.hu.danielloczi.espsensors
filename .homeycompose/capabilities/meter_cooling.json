@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "Cooling"
+    },
+    "type": "number",
+    "icon": "/assets/meter_cooling.svg",
+    "units": {
+        "en": "kWh"
+    },
+    "getable": true,
+    "setable": false,
+    "insights": true,
+    "decimals": 0
+}

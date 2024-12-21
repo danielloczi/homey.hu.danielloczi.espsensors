@@ -1,0 +1,44 @@
+{
+  "name": {
+    "en": "Hydrocal M3"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "meter_water_warm",
+    "meter_water_cold",
+    "meter_heating",
+    "meter_cooling",
+    "measure_temperature_supply",
+    "measure_temperature_return",
+    "measure_temperature_delta",
+    "measure_signal_strength",
+    "meter_water_warm_daily",
+    "meter_water_cold_daily",
+    "meter_heating_daily",
+    "meter_cooling_daily"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [
+    "lan"
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "pair": [
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ]
+}

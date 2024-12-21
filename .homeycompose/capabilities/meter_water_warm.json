@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "Warm Water"
+    },
+    "type": "number",
+    "icon": "/assets/meter_water_warm.svg",
+    "units": {
+        "en": "m³"
+    },
+    "getable": true,
+    "setable": false,
+    "insights": true,
+    "decimals": 2
+}

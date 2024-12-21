@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "Cold Water"
+    },
+    "type": "number",
+    "icon": "/assets/meter_water_cold.svg",
+    "units": {
+        "en": "m³"
+    },
+    "getable": true,
+    "setable": false,
+    "insights": true,
+    "decimals": 2
+}
