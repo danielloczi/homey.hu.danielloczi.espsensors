@@ -96,6 +96,9 @@ module.exports = class HydrocalM3Driver extends Homey.Device {
       || capabilityId === 'meter_water_warm') {
       dailyValue *= 1000;
     }
+    if (dailyValue < 0) {
+      dailyValue = 0;
+    }
     if (previousValue === 0) {
       if (capabilityId === 'meter_cooling'
         || capabilityId === 'meter_heating'
