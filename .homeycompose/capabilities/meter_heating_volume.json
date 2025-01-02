@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "Heating Volume"
+    },
+    "type": "number",
+    "icon": "/assets/meter_heating.svg",
+    "units": {
+        "en": "m³"
+    },
+    "getable": true,
+    "setable": false,
+    "insights": true,
+    "decimals": 3
+}

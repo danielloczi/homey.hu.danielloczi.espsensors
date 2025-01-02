@@ -3,10 +3,7 @@
 import EventSource from 'eventsource';
 import Homey from 'homey';
 
-interface PreviousMeters {
-  // yesterday date
-  date: Date;
-  // #region values from yesterday
+interface MeterValues {
   // eslint-disable-next-line camelcase
   meter_cooling: number;
   // eslint-disable-next-line camelcase
@@ -15,7 +12,15 @@ interface PreviousMeters {
   meter_water_cold: number;
   // eslint-disable-next-line camelcase
   meter_water_warm: number;
-  // #endregion
+  // eslint-disable-next-line camelcase
+  meter_cooling_volume: number;
+  // eslint-disable-next-line camelcase
+  meter_heating_volume: number;
+}
+
+interface PreviousMeters extends MeterValues {
+  // yesterday date
+  date: Date;
 }
 
 module.exports = class HydrocalM3Driver extends Homey.Device {
@@ -48,6 +53,8 @@ module.exports = class HydrocalM3Driver extends Homey.Device {
       meter_heating: 0,
       meter_water_cold: 0,
       meter_water_warm: 0,
+      meter_cooling_volume: 0,
+      meter_heating_volume: 0,
     };
     await this.setStoreValue(this.previousMetersKey, this.previousMeters);
   }
@@ -58,6 +65,8 @@ module.exports = class HydrocalM3Driver extends Homey.Device {
     this.updateDailyCapability('meter_heating');
     this.updateDailyCapability('meter_water_cold');
     this.updateDailyCapability('meter_water_warm');
+    this.updateDailyCapability('meter_cooling_volume');
+    this.updateDailyCapability('meter_heating_volume');
   }
 
   updateDailyCapability(capabilityId: keyof PreviousMeters) {
@@ -70,9 +79,11 @@ module.exports = class HydrocalM3Driver extends Homey.Device {
       return; // Exit if the value is not a number
     }
     this.log(`updateDailyCapability ${capabilityId} previous value:`, previousValue);
-    let dailyValue = previousValue === 0
-      ? 0
-      : currentValue - previousValue;
+    if (capabilityId === 'meter_water_cold'
+      || capabilityId === 'meter_water_warm') {
+      previousValue /= 1000;
+    }
+    let dailyValue = currentValue - previousValue;
     // fix unit of measure in case of water
     // (meter works in m3, but the daily is calculated in liters)
     if (capabilityId === 'meter_water_cold'
@@ -80,19 +91,20 @@ module.exports = class HydrocalM3Driver extends Homey.Device {
       dailyValue *= 1000;
     }
     if (previousValue === 0) {
-      previousValue = dailyValue;
       if (capabilityId === 'meter_cooling'
         || capabilityId === 'meter_heating'
         || capabilityId === 'meter_water_cold'
         || capabilityId === 'meter_water_warm'
+        || capabilityId === 'meter_cooling_volume'
+        || capabilityId === 'meter_heating_volume'
       ) {
-        this.previousMeters[capabilityId] = previousValue;
+        this.previousMeters[capabilityId] = dailyValue;
       }
       this.setStoreValue(this.previousMetersKey, this.previousMeters)
         .catch((error) => this.log('Failed to store previous meter data:', error));
     }
     const dailyCapabilityId = `${capabilityId}_daily`;
-    this.setCapabilityValueAndLog(dailyCapabilityId, dailyValue);
+    this.setCapabilityValueAndLog(dailyCapabilityId, previousValue === 0 ? 0 : dailyValue);
   }
 
   setCapabilityValueAndLog(capabilityId: string, value: unknown) {
@@ -108,7 +120,8 @@ module.exports = class HydrocalM3Driver extends Homey.Device {
     if (!this.previousMeters?.date) return;
     const today = this.getDateWithoutTime(new Date(Date.now()));
     const diffInMs = Math.abs(today.getTime() - new Date(this.previousMeters.date).getTime());
-    if (diffInMs > this.msInTwoDays) {
+    // this.log('Previous meters timespan:', diffInMs);
+    if (diffInMs >= this.msInTwoDays) {
       // the last measurement is too old
       // update daily capabilities
       this.updateDailyCapabilities();
@@ -132,7 +145,6 @@ module.exports = class HydrocalM3Driver extends Homey.Device {
       this.log(this.previousMeters);
       // #endregion
       this.eventSource = new EventSource('http://192.168.0.39/events');
-
       //  this.log(this.eventSource);
 
       this.eventSource.onopen = () => {
@@ -165,6 +177,12 @@ module.exports = class HydrocalM3Driver extends Homey.Device {
         } else if (parsedMsg.id === 'sensor-cooling__kwh_') {
           this.setCapabilityValueAndLog('meter_cooling', parsedMsg.value);
           this.updateDailyCapability('meter_cooling');
+        } else if (parsedMsg.id === 'sensor-heating_volume__m3_') {
+          this.setCapabilityValueAndLog('meter_heating_volume', parsedMsg.value);
+          // this.updateDailyCapability('meter_heating_volume');
+        } else if (parsedMsg.id === 'sensor-cooling_volume__m3_') {
+          this.setCapabilityValueAndLog('meter_cooling_volume', parsedMsg.value);
+          // this.updateDailyCapability('meter_cooling_volume');
         } else if (parsedMsg.id === 'sensor-supply_temperature__c_') {
           this.setCapabilityValueAndLog('measure_temperature_supply', parsedMsg.value);
         } else if (parsedMsg.id === 'sensor-return_temperature__c_') {

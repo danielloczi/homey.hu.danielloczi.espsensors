@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "Cooling Volume"
+    },
+    "type": "number",
+    "icon": "/assets/meter_cooling.svg",
+    "units": {
+        "en": "m³"
+    },
+    "getable": true,
+    "setable": false,
+    "insights": true,
+    "decimals": 3
+}

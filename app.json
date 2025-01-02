@@ -144,6 +144,20 @@
       "insights": true,
       "decimals": 0
     },
+    "meter_cooling_volume": {
+      "title": {
+        "en": "Cooling Volume"
+      },
+      "type": "number",
+      "icon": "/assets/meter_cooling.svg",
+      "units": {
+        "en": "m³"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "decimals": 3
+    },
     "meter_heating": {
       "title": {
         "en": "Heating"
@@ -171,6 +185,20 @@
       "setable": false,
       "insights": true,
       "decimals": 0
+    },
+    "meter_heating_volume": {
+      "title": {
+        "en": "Heating Volume"
+      },
+      "type": "number",
+      "icon": "/assets/meter_heating.svg",
+      "units": {
+        "en": "m³"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "decimals": 3
     },
     "meter_water_cold": {
       "title": {
